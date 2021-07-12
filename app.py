@@ -53,6 +53,20 @@ def delete(id):
     except:
         return 'Something wrong'
 
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    report = Cgpa.query.get_or_404(id)
+    if request.method == 'POST':
+        report.content = request.form['content']
+
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'Something woring'
+    else:
+        return render_template('edit.html', report=report)
+
 @app.route('/user/<name>')
 def user(name):
 	return render_template('user.html', name=name)
