@@ -42,6 +42,17 @@ def index():
         reports = Cgpa.query.all()
         return render_template('index.html', reports=reports)
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    report_to_delete = Cgpa.query.get_or_404(id)
+
+    try:
+        db.session.delete(report_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'Something wrong'
+
 @app.route('/user/<name>')
 def user(name):
 	return render_template('user.html', name=name)
