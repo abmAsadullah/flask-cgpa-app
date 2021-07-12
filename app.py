@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,  request, redirect
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 
@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = 'jzlkgajlgzhgr#22'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
-class Todo(db.Model):
+class Cgpa(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     course_code = db.Column(db.String(200), nullable=False)
     course_name = db.Column(db.String(200), nullable=False)
@@ -23,10 +23,24 @@ class Todo(db.Model):
         self.course_cradit = course_cradit
         self.got_marks = got_marks
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['POST', 'GET'])
 def index():
-	return render_template('index.html')
+    if request.method == 'POST':
+        own_course_code = request.form['course_code']
+        own_course_name = request.form['course_name']
+        own_course_cradit = request.form['course_cradit']
+        own_got_marks = request.form['got_marks']
+        new_report = Cgpa(course_code=own_course_code, course_name=own_course_name, course_cradit=own_course_cradit, got_marks=own_got_marks)
+
+        try:
+            db.session.add(new_report)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'You did wrong!'
+    else:
+        reports = Cgpa.query.all()
+        return render_template('index.html', reports=reports)
 
 @app.route('/user/<name>')
 def user(name):

@@ -1,7 +1,51 @@
 {% extends "base.html" %}
-{% block title %}Flasky{% endblock %}
+{% block title %}My Report{% endblock %}
 {% block page_content %}
-<div class="page-header">
-	<h1>Hello World!</h1>
-</div>
+	<div class="content">
+		<h1>My Report</h1>
+		<br/>
+		<table class="text-center">
+			<tr>
+				<th>Course Code</th>
+				<th>Course Name</th>
+				<th>Course Cradit</th>
+				<th>Marks</th>
+				<th>Grade</th>
+				<th>Grade Point</th>
+				<th>Earned Cradit</th>
+				<th>Score</th>
+				<th>Edit/Delete</th>
+			</tr>
+			{% for report in reports %}
+				<tr>
+					<td>{{ report.course_code }}</td>
+					<td>{{ report.course_name }}</td>
+					<td>{{ report.course_cradit }}</td>
+					<td>{{ report.got_marks }}</td>
+					<td>A+</td>
+					<td>4.00</td>
+					<td>3</td>
+					<td>12</td>
+					<td>
+						<a href="#">Edit</a>
+						<a href="#">Delete</a>
+					</td>
+				</tr>
+				{% endfor %}
+		</table>
+		<br/>
+		<br/>
+		<h2>Add new subject:</h2>
+		<form action="/" method="POST">
+			<label for="course_code">Course Code :</label>
+			<input type="text" name="course_code" id="course_code"><br/>
+			<label for="course_name">Subject Name :</label>
+			<input type="text" name="course_name" id="course_name"><br/>
+			<label for="course_cradit">Course Cradit :</label>
+			<input type="number" name="course_cradit" id="course_cradit"><br/>
+			<label for="got_marks">Marks :</label>
+			<input type="number" name="got_marks" id="got_marks"><br/>
+			<input type="submit" value="Add Subject">
+		</form>
+	</div>
 {% endblock %}
