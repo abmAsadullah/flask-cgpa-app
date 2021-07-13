@@ -22,10 +22,58 @@
 					<td>{{ report.course_name }}</td>
 					<td>{{ report.course_cradit }}</td>
 					<td>{{ report.got_marks }}</td>
-					<td>A+</td>
-					<td>4.00</td>
-					<td>3</td>
-					<td>12</td>
+					<!-- Grade -->
+						{% if report.got_marks >= 80 %}
+							<td>A+</td>
+						{% elif report.got_marks >= 75 %}
+							<td>A</td>
+						{% elif report.got_marks >= 70 %}
+							<td>A-</td>
+						{% elif report.got_marks >= 65 %}
+							<td>B+</td>
+						{% elif report.got_marks >= 60 %}
+							<td>B</td>
+						{% elif report.got_marks >= 55 %}
+							<td>B-</td>
+						{% elif report.got_marks >= 50 %}
+							<td>C+</td>
+						{% elif report.got_marks >= 45 %}
+							<td>C</td>
+						{% elif report.got_marks >= 40 %}
+							<td>D</td>
+						{% else %}
+							<td>F</td>
+						{% endif %}
+					<!-- Grade Point -->
+						{% if report.got_marks >= 80 %}
+							<td>4.00</td>
+						{% elif report.got_marks >= 75 %}
+							<td>3.75</td>
+						{% elif report.got_marks >= 70 %}
+							<td>3.50</td>
+						{% elif report.got_marks >= 65 %}
+							<td>3.25</td>
+						{% elif report.got_marks >= 60 %}
+							<td>3.00</td>
+						{% elif report.got_marks >= 55 %}
+							<td>2.75</td>
+						{% elif report.got_marks >= 50 %}
+							<td>2.50</td>
+						{% elif report.got_marks >= 45 %}
+							<td>2.25</td>
+						{% elif report.got_marks >= 40 %}
+							<td>2.00</td>
+						{% else %}
+							<td>0.00</td>
+						{% endif %}
+					
+					{% if report.got_marks >= 40 %}
+						<td>{{ report.course_cradit }}</td>
+						<td>{{ report.got_marks/5 }}</td>
+					{% else %}
+						<td>0</td>
+						<td>0</td>
+					{% endif %}
 					<td>
 						<a href="/edit/{{ report.id }}">Edit</a>
 						<a href="/delete/{{ report.id }}">Delete</a>
