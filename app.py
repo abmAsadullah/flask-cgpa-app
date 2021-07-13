@@ -60,7 +60,10 @@ def delete(id):
 def edit(id):
     report = Cgpa.query.get_or_404(id)
     if request.method == 'POST':
-        report.content = request.form['content']
+        report.course_code = request.form['course_code']
+        report.course_name = request.form['course_name']
+        report.course_cradit = request.form['course_cradit']
+        report.got_marks = request.form['got_marks']
 
         try:
             db.session.commit()

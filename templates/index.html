@@ -23,7 +23,9 @@
 					<td>{{ report.course_cradit }}</td>
 					<td>{{ report.got_marks }}</td>
 					<!-- Grade -->
-						{% if report.got_marks >= 80 %}
+					{% if report.got_marks > 100 or report.course_cradit > 4 %}
+						<td>Invalid</td>
+						{% elif report.got_marks >= 80 %}
 							<td>A+</td>
 						{% elif report.got_marks >= 75 %}
 							<td>A</td>
@@ -43,9 +45,26 @@
 							<td>D</td>
 						{% else %}
 							<td>F</td>
-						{% endif %}
+					{% endif %}
 					<!-- Grade Point -->
-						{% if report.got_marks >= 80 %}
+					{% if report.got_marks > 100 or report.course_cradit > 4 %}
+						<td>Invalid</td>
+					{% elif report.got_marks >= 40 %}
+						{% if report.got_marks % 5 == 0 %}
+							<td>{{ report.got_marks/20 }}</td>
+						{% elif report.got_marks % 5 == 4 %}
+							<td>{{ (report.got_marks - 4)/20 }}</td>
+						{% elif report.got_marks % 5 == 3 %}
+							<td>{{ (report.got_marks - 3)/20 }}</td>
+						{% elif report.got_marks % 5 == 2 %}
+							<td>{{ (report.got_marks - 2)/20 }}</td>
+						{% else %}
+							<td>{{ (report.got_marks - 1)/20 }}</td>
+						{% endif %}
+					{% else %}
+						<td>0.00</td>
+					{% endif %}
+						<!-- {% if report.got_marks >= 80 %}
 							<td>4.00</td>
 						{% elif report.got_marks >= 75 %}
 							<td>3.75</td>
@@ -65,14 +84,32 @@
 							<td>2.00</td>
 						{% else %}
 							<td>0.00</td>
-						{% endif %}
-					
-					{% if report.got_marks >= 40 %}
+						{% endif %} -->
+					<!-- Earned Cradit -->
+					{% if report.got_marks > 100 or report.course_cradit > 4 %}
+						<td>Invalid</td>
+					{% elif report.got_marks >= 40 %}
 						<td>{{ report.course_cradit }}</td>
-						<td>{{ report.got_marks/5 }}</td>
 					{% else %}
 						<td>0</td>
-						<td>0</td>
+					{% endif %}
+					<!-- Score -->
+					{% if report.got_marks > 100 or report.course_cradit > 4 %}
+						<td>Invalid</td>
+					{% elif report.got_marks >= 40 %}
+						{% if report.got_marks % 5 == 0 %}
+							<td>{{ (report.got_marks/20) * report.course_cradit }}</td>
+						{% elif report.got_marks % 5 == 4 %}
+							<td>{{ ((report.got_marks - 4)/20) * report.course_cradit }}</td>
+						{% elif report.got_marks % 5 == 3 %}
+							<td>{{ ((report.got_marks - 3)/20) * report.course_cradit }}</td>
+						{% elif report.got_marks % 5 == 2 %}
+							<td>{{ ((report.got_marks - 2)/20) * report.course_cradit }}</td>
+						{% else %}
+							<td>{{ ((report.got_marks - 1)/20) * report.course_cradit }}</td>
+						{% endif %}
+					{% else %}
+						<td>0.00</td>
 					{% endif %}
 					<td>
 						<a href="/edit/{{ report.id }}">Edit</a>
