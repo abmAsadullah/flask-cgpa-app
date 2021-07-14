@@ -14,20 +14,41 @@ This is project is for MIU students, who want to calculate his/her expected CGPA
 ## 🤖 Getting started
 
 ### Pre-requirenments
-- Install Python [Link](https://www.python.org/downloads/)
+- Install Python [Download link](https://www.python.org/downloads/)
 - Set Path [Video (Naim Sir)](https://www.youtube.com/watch?v=EDNpd-7vaJ8&list=PL5WWFMzXof5hA8cLzEoim7BEkHcmddbOK&index=6)
-- Install Git (Link) [Video (Naim Sir)](https://git-scm.com/downloads)
+- Install Git (Optional) [Download link](https://git-scm.com/downloads)
 
 ### How to run
-- TDA
 
-## Author
+- In the desired directory, type `git clone https://github.com/abmAsadullah/flask-cgpa-app.git` then `cd flask-cgpa-app` in the terminal or DOWNLOAD from github repository [Download link](https://github.com/abmAsadullah/flask-cgpa-app)
 
-👤 **A B M Asadullah**
+- Run `pip install virtualenv` to install the Virtual Environment (VENV).
+
+
+- Run `virtualenv env` to initialize the VENV.
+
+- Run `.\env\Scripts\activate` to active VENV.
+
+- Run `pip install -r requirements.txt` to install requirenments.
+
+- Finally RUN `python app.py` to run the server.
+
+- Open from your browser `localhost:5000` to start.
+
+- Add your Course Code, Course Name, Course Cradit and Expected marks && ENJOY.
+
+## Contributors
+
+👤 **A B M Asadullah** (Author)
 
 - GitHub: [@abmAsadullah](https://github.com/abmAsadullah)
 - Twitter: [@abmAsadullah](https://twitter.com/abmAsadullah)
 - LinkedIn: [abmAsadullah](https://www.linkedin.com/in/abmAsadullah)
+
+👤 **Naimul Hawk** (Template)
+
+- GitHub: [@Naimul Hawk](https://github.com/naimul011)
+
 
 ## 🤝 Contributing
 
