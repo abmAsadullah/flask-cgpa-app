@@ -39,7 +39,7 @@ This is project is for MIU students, who want to calculate his/her expected CGPA
 
 ## Contributors
 
-👤 **A B M Asadullah** (Author)
+👤 **A B M Asadullah** (Development)
 
 - GitHub: [@abmAsadullah](https://github.com/abmAsadullah)
 - Twitter: [@abmAsadullah](https://twitter.com/abmAsadullah)
