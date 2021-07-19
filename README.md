@@ -22,6 +22,8 @@ This is project is for MIU students, who want to calculate his/her expected CGPA
 
 - In the desired directory, type `git clone https://github.com/abmAsadullah/flask-cgpa-app.git` then `cd flask-cgpa-app` in the terminal or DOWNLOAD from github repository [Download link](https://github.com/abmAsadullah/flask-cgpa-app)
 
+- Run `pip install flask` to install the Virtual Environment (VENV).
+
 - Run `pip install virtualenv` to install the Virtual Environment (VENV).
 
 
